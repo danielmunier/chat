@@ -19,6 +19,9 @@ class App {
         this.setupRoutes()
     }
 
+    getMessages(){
+        
+    }
 
     listenServer() {
         this.httpServer.listen(3000, () => {

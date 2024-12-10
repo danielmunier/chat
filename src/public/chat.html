@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+     
+        body {
+            background-color: #0a192f; 
+            color: #dce7ff; 
+        }
+
+        /* Elementos com glow sutil */
+        .glow {
+            box-shadow: 0 0 8px rgba(100, 255, 218, 0.8), 
+                        0 0 15px rgba(100, 255, 218, 0.6);
+        }
+
+        /* Gradiente de bordas */
+        .gradient-border {
+            background: linear-gradient(135deg, #64ffda, #0e76a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center">
+
+    <!-- Chat Container -->
+    <div id="main-content" class="hidden flex-1 flex flex-col bg-[#112240] rounded-2xl shadow-lg max-w-4xl w-full h-full md:h-[90%]">
+        <!-- Header -->
+        <div class="p-4 bg-[#233554] text-lg font-semibold flex items-center rounded-t-2xl border-b border-[#0e76a8]">
+            <span class="gradient-border"># geral</span>
+            <span id="nickname-display" class="ml-4 text-sm text-[#64ffda] italic"></span>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-3">
+            <ul id="messages">
+                <li class="p-3 bg-[#112240] rounded-lg text-sm shadow-md">
+                    <span class="text-[#64ffda]">Sistema:</span> Bem-vindo ao chat!
+                </li>
+            </ul>
+        </div>
+
+        <!-- Message Input -->
+        <form id="form" class="flex items-center p-4 bg-[#233554] rounded-b-2xl border-t border-[#0e76a8]">
+            <input id="input" type="text" placeholder="Escreva sua mensagem..." autocomplete="off"
+                class="flex-1 p-3 rounded-lg bg-[#112240] text-[#dce7ff] placeholder-[#778bad] outline-none focus:ring-2 focus:ring-[#64ffda] glow" />
+            <button type="submit"
+                class="ml-2 px-4 py-2 bg-gradient-to-r from-[#64ffda] to-[#0e76a8] text-white rounded-lg hover:from-[#52e5c4] hover:to-[#0c5f89] focus:ring-2 focus:ring-[#64ffda] transition glow">
+                Enviar
+            </button>
+        </form>
+    </div>
+
+    <!-- Nickname Form -->
+    <form id="usernameForm" class="flex flex-col items-center space-y-6 bg-[#112240] p-8 rounded-2xl shadow-lg max-w-md w-full">
+        <h1 class="text-xl font-bold text-[#dce7ff] gradient-border">Digite seu nickname</h1>
+        <input type="text" id="username"
+            class="p-3 w-full rounded-lg bg-[#233554] text-[#dce7ff] placeholder-[#778bad] outline-none focus:ring-2 focus:ring-[#64ffda] glow"
+            placeholder="Nickname">
+        <button type="submit"
+            class="px-6 py-3 bg-gradient-to-r from-[#64ffda] to-[#0e76a8] text-white rounded-lg hover:from-[#52e5c4] hover:to-[#0c5f89] focus:ring-2 focus:ring-[#64ffda] transition glow">
+            Entrar
+        </button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

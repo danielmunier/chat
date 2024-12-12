@@ -31,8 +31,8 @@ class App {
     }
 
     private startServer() {
-        this.httpServer.listen(3005, async () => {
-            console.log("Servidor rodando em http://localhost:3005");
+        this.httpServer.listen(3000, async () => {
+            console.log("Servidor rodando em http://localhost:3000");
 
            
         });
